@@ -1,0 +1,35 @@
+name: 问题反馈
+description: 报告可复现的问题
+title: "[问题] "
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: 插件、VS Code、Python 与操作系统版本
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: 使用的 AI 服务
+      options:
+        - Codex
+        - DeepSeek
+        - 未配置或不涉及 AI
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 请附可公开的最小样例；不要粘贴密钥或私有源码。
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 预期结果与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 截图或已脱敏的错误详情（可选）
