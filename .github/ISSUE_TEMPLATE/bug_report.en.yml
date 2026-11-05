@@ -1,0 +1,35 @@
+name: Bug report (English)
+description: Report a reproducible problem
+title: "[Bug] "
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Extension, VS Code, Python, and operating system versions
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: AI service
+      options:
+        - Codex
+        - DeepSeek
+        - Not configured or not relevant
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Attach a minimal public example. Do not include API keys or private source.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected behavior and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshot or redacted error details (optional)

@@ -1,5 +1,7 @@
 # Code Companion Structure Map
 
+**简体中文** | [English](README.en.md)
+
 VS Code 中的 Python 项目结构图、调用链路与 AI 讲解工具。
 
 **当前阶段：预览测试。** 这里提供测试安装包、使用说明和反馈入口，开发源码及测试工程暂未公开。

@@ -1,0 +1,16 @@
+name: Suggestion (English)
+description: Suggest an improvement to a specific workflow
+title: "[Suggestion] "
+body:
+  - type: textarea
+    id: scenario
+    attributes:
+      label: What are you trying to do, and what is difficult?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: How would you like it to work?
+    validations:
+      required: true
