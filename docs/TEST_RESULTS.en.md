@@ -1,6 +1,14 @@
-# Validation for 0.27.22
+# Preview validation
 
 [简体中文](TEST_RESULTS.md) | **English**
+
+## 0.27.23
+
+The distributed VSIX was installed in isolated Windows VS Code user and extension directories. Using the public `demo/desktop.py`, the static trace followed `make_launch_request()` into `on_start_click()` and the `open_app(request)` use site without model configuration.
+
+All 156 Node regressions and 20 call-chain tests passed. The standalone provider suite still has one assertion failure about prompt wording.
+
+## 0.27.22
 
 All 18 fixed release gates passed. Production files stayed unchanged during final QA; every VSIX file matches the audited bytes.
 Coverage includes Node regressions, source/citation contracts, Python compatibility, editing workflows, history restoration, browser checks, and isolated pytest projects.

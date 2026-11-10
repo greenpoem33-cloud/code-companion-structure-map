@@ -6,11 +6,11 @@
 
 ## Try the Windows desktop demo
 
-Click **Notepad** (记事本) or **Calculator** (计算器) in the simulated Start menu. Follow the launch request as `make_launch_request()` returns it, `on_start_click()` receives it, and `open_app()` consumes it. Select a step to highlight its Python source.
+Click the image, choose Notepad or Calculator, and trace the launch request to its Python source in 30 seconds.
 
 [![Simulated Windows desktop with the source trace for a launch request](demo/preview.jpg)](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)
 
-**[Click the image or play online here](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)** · [Offline HTML](demo/index.html) (select **Download raw file** on GitHub). The demo uses the included [Python example](demo/desktop.py) and precomputed source evidence. It requires no VS Code installation, Python runtime, or model credentials.
+**[Play online](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)** · [Offline HTML](demo/index.html) (select **Download raw file**).
 
 <details>
 <summary>Follow the four steps here on GitHub</summary>
@@ -24,7 +24,13 @@ Click **Notepad** (记事本) or **Calculator** (计算器) in the simulated Sta
 
 ## Try it in VS Code
 
-Download the **0.27.22 preview** VSIX from [Releases](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases), choose **Install from VSIX…** in VS Code, and open a Python project. Set up your own DeepSeek key or Codex login, then run the call-chain explanation on a function and open **View return value and uses**. See the [installation guide](docs/INSTALL.en.md).
+**[Download the 0.27.23 preview VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.23-preview.1/code-companion-structure-map-0.27.23.vsix)** · [Release notes](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/tag/v0.27.23-preview.1)
+
+1. In the VS Code Extensions menu, select **Install from VSIX…**, then reload the window.
+2. Open [desktop.py](demo/desktop.py) and select **Download raw file**, open its folder in VS Code, and open the Python file.
+3. Right-click inside `make_launch_request()` and choose **Code Companion: 追踪返回值去向** (Trace return value). Select **Open use site** next to the `open_app` entry.
+
+This command reads saved source and requires no model configuration. See [Installation](docs/INSTALL.en.md) for requirements and optional AI features.
 
 The preview also includes project maps, source-linked call chains, and a structural change summary before applying edits. Static relationships, test observations, and unresolved links are displayed separately.
 

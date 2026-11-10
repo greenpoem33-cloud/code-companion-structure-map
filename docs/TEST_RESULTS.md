@@ -1,4 +1,12 @@
-# 0.27.22 验证记录
+# 预览版验证记录
+
+## 0.27.23
+
+在独立的 Windows VS Code 用户及扩展目录安装分发 VSIX，使用公开的 `demo/desktop.py` 验证静态返回值追踪。插件从 `make_launch_request()` 定位到 `on_start_click()` 接收的 `request` 及 `open_app(request)` 的传入位置。此过程未配置模型。
+
+另通过 156 项 Node 回归和 20 项调用链测试。独立 Provider 测试有一条既有提示词措辞断言失败。
+
+## 0.27.22
 
 固定 18 组发布门禁通过。生产文件在最终检查期间保持稳定，VSIX 与检查时的文件逐字节一致。
 包括 Node 回归、源码/引用契约、Python 兼容、完整编辑流程、历史恢复、浏览器检查及隔离 pytest 项目。

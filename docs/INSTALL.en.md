@@ -4,22 +4,29 @@
 
 Validated on Windows. Requires VS Code 1.90+ and Python 3.10+; Python 3.11 or later is recommended.
 
-1. Download `code-companion-structure-map-0.27.22.vsix` from Releases.
-2. In VS Code's Extensions menu, select **Install from VSIX…**, then reload the window.
-3. Open a Python project and select its Python interpreter. If the Python extension is unavailable, set `codeCompanion.pythonCommand` to the interpreter's full path.
-4. Configure your own AI service. For DeepSeek, expand the DeepSeek configuration area in Code Companion, enter your own API key, and save it. For Codex, install the CLI and sign in with your own account.
-5. Run **Code Companion: 安装自检** (installation check), then click **Analyze** once and wait for completion.
+## Install and trace a return value
+
+1. [Download the 0.27.23 preview VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.23-preview.1/code-companion-structure-map-0.27.23.vsix).
+2. In the VS Code Extensions menu, choose **Install from VSIX…**, then reload the window.
+3. Open [desktop.py](../demo/desktop.py) and select **Download raw file** and open its folder and the file in VS Code. Select a Python interpreter or set `codeCompanion.pythonCommand` to its full path.
+4. Right-click inside `make_launch_request()` and choose **Code Companion: 追踪返回值去向** (Trace return value). Select **Open use site** next to the `open_app` entry to see `return open_app(request)`.
+
+This command reads saved source and runs without model configuration or an initial project analysis.
 
 CLI installation:
 
 ```powershell
-code --install-extension .\code-companion-structure-map-0.27.22.vsix --force
+code --install-extension .\code-companion-structure-map-0.27.23.vsix --force
 ```
 
 The analysis backend is bundled. No separate html-skill download is required.
 If an older `codeCompanion.htmlSkillRoot` or `HTML_SKILL_ROOT` override points to a missing installation, clear that override to use the bundled backend.
 Python 3.10 requires `tomli` in the selected environment. Basic analysis on Python 3.11+ uses only the standard library.
 Running existing project tests also requires the project's dependencies and pytest. Chain analysis may run existing tests; request “Read source only; do not run tests” when you only want static analysis.
+
+## Optional AI features
+
+For semantic project analysis or AI explanations, configure your own DeepSeek key in Code Companion or install and sign in to the Codex CLI. Then run **Code Companion: 安装自检** (installation check) and choose **Analyze**.
 
 To select DeepSeek explicitly (save the key in the plugin, not in this file):
 
