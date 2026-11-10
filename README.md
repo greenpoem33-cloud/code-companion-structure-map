@@ -8,9 +8,9 @@
 
 打开模拟桌面的「开始」菜单，点 **记事本** 或 **计算器**。跟着启动请求从 `make_launch_request()` 返回，看到 `on_start_click()` 接收它，再传给 `open_app()`。点任何一步，右侧高亮对应的 Python 源码。
 
-[![模拟 Windows 桌面和启动请求的源码追踪](demo/preview.jpg)](demo/index.html)
+[![模拟 Windows 桌面和启动请求的源码追踪](demo/preview.jpg)](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)
 
-打开 [交互演示文件](demo/index.html)，用 **Download raw file** 保存 HTML，再用浏览器打开。演示使用随附的 [Python 样例](demo/desktop.py) 和预生成的源码证据，无需 VS Code、Python 或模型密钥。
+**[点击图片或点这里，在线试玩](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)** · [下载 HTML 离线版](demo/index.html)（在文件页点 **Download raw file**）。演示使用随附的 [Python 样例](demo/desktop.py) 和预生成的源码证据，无需 VS Code、Python 或模型密钥。
 
 <details>
 <summary>直接在 GitHub 查看启动请求的 4 步去向</summary>

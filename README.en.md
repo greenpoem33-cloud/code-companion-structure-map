@@ -8,9 +8,9 @@
 
 Click **Notepad** (记事本) or **Calculator** (计算器) in the simulated Start menu. Follow the launch request as `make_launch_request()` returns it, `on_start_click()` receives it, and `open_app()` consumes it. Select a step to highlight its Python source.
 
-[![Simulated Windows desktop with the source trace for a launch request](demo/preview.jpg)](demo/index.html)
+[![Simulated Windows desktop with the source trace for a launch request](demo/preview.jpg)](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)
 
-Open the [interactive demo file](demo/index.html), use **Download raw file** to save the HTML, then open it in your browser. The demo uses the included [Python example](demo/desktop.py) and precomputed source evidence. It requires no VS Code installation, Python runtime, or model credentials.
+**[Click the image or play online here](https://greenpoem33-cloud.github.io/code-companion-structure-map/demo/)** · [Offline HTML](demo/index.html) (select **Download raw file** on GitHub). The demo uses the included [Python example](demo/desktop.py) and precomputed source evidence. It requires no VS Code installation, Python runtime, or model credentials.
 
 <details>
 <summary>Follow the four steps here on GitHub</summary>
