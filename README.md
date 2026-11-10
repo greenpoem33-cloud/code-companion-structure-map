@@ -2,32 +2,36 @@
 
 **简体中文** | [English](README.en.md)
 
-VS Code 中的 Python 项目结构图、调用链路与 AI 讲解工具。
+**一个 Python 函数返回的数据，接下来去了哪里？** Code Companion 在 VS Code 里把返回语句、调用方接收位置和后续使用连接起来，每一步都能回到源码。
 
-**当前阶段：预览测试。** 这里提供测试安装包、使用说明和反馈入口，开发源码及测试工程暂未公开。
-待版本稳定并收集使用反馈后，再决定后续开源安排。本次未授予开源许可证。
+## 30 秒试玩 Windows 桌面
 
-## 下载与使用
+打开模拟桌面的「开始」菜单，点 **记事本** 或 **计算器**。跟着启动请求从 `make_launch_request()` 返回，看到 `on_start_click()` 接收它，再传给 `open_app()`。点任何一步，右侧高亮对应的 Python 源码。
 
-前往 [Releases](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases) 下载 **0.27.22 预览测试版**的 VSIX。
-在 VS Code 扩展菜单选择“从 VSIX 安装”，重载窗口后打开 Python 项目。
-详细步骤见 [安装与配置](docs/INSTALL.md)。
+[![模拟 Windows 桌面和启动请求的源码追踪](demo/preview.jpg)](demo/index.html)
 
-每位用户填写自己的 DeepSeek 密钥，或登录自己的 Codex 账号。
-安装包不包含开发者的密钥、登录凭据、个人配置或聊天记录。
+打开 [交互演示文件](demo/index.html)，用 **Download raw file** 保存 HTML，再用浏览器打开。演示使用随附的 [Python 样例](demo/desktop.py) 和预生成的源码证据，无需 VS Code、Python 或模型密钥。
 
-## 可以体验什么
+<details>
+<summary>直接在 GitHub 查看启动请求的 4 步去向</summary>
 
-- 分析项目结构，在侧栏、编辑区或新窗口查看思维导图。
-- 从入口或指定函数查看调用链，点击节点跳转源码或继续讲解。
-- 查看叶函数返回结果在调用方中的接收、写入、传参和返回位置。
-- 区分静态调用关系、成功用例中的观察和未解析关系。
-- 修改方案先看差异；应用前提示结构影响并由你确认，取消不会写入源码。
+1. [创建请求](demo/desktop.py#L7-L8) · `make_launch_request()` 返回包含应用 ID 和窗口配置的字典。
+2. [接收结果](demo/desktop.py#L15-L16) · `on_start_click()` 将结果保存在 `request`。
+3. [传递请求](demo/desktop.py#L17) · `request` 作为参数传入 `open_app()`。
+4. [读取窗口配置](demo/desktop.py#L11-L12) · `open_app()` 读取并返回 `request['window']`。
 
-## 反馈
+</details>
 
-请通过 [Issues](https://github.com/greenpoem33-cloud/code-companion-structure-map/issues) 提交可复现的问题或改进建议。
-提供版本、操作步骤、预期与实际结果，尽量附一个可公开的最小样例。
-请勿提交密钥、登录凭据或私有项目源码。
+## 在 VS Code 里试用
+
+从 [Releases](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases) 下载 **0.27.22 预览版** VSIX，在扩展菜单选择「从 VSIX 安装」，再打开一个 Python 项目。配置自己的 DeepSeek 密钥或 Codex 登录后，在函数内使用「讲解业务链路」，查看「返回结果与去向」。详见 [安装与配置](docs/INSTALL.md)。
+
+预览版也支持项目结构图、调用链源码导航和修改前的差异与结构影响确认。静态关系、测试观察与未知关系分别显示。
+
+## 想听你的意见
+
+只看过演示也可以反馈。**你最近一次想追的是哪个函数的返回值？你当时怎么查的，最费时间的是哪一步？** [分享试用感受](https://github.com/greenpoem33-cloud/code-companion-structure-map/issues/new?template=desktop-feedback.md) · [报告 Bug](https://github.com/greenpoem33-cloud/code-companion-structure-map/issues/new/choose)
+
+这是公开预览分发仓库，提供安装包、说明与独立演示样例。插件开发源码及内部测试工程暂未公开，本次预览未授予开源许可证。请勿在反馈里提交凭据或私有源码。
 
 [已知范围](docs/KNOWN_ISSUES.md) · [数据与凭据](docs/PRIVACY.md) · [本版验证](docs/TEST_RESULTS.md)

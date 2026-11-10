@@ -2,32 +2,36 @@
 
 [简体中文](README.md) | **English**
 
-A VS Code tool for exploring Python project structure, following call chains, and getting source-linked AI explanations.
+**Where does a Python function's return value go?** Code Companion links the return statement, the caller that receives the value, and its later uses in VS Code. Every step points back to the source.
 
-**Preview release 0.27.22.** This repository provides installable test packages, documentation, and a place to report feedback.
-The development source and test project are not publicly released. A future open-source release may be considered after the product stabilizes; no open-source license is granted with this preview.
+## Try the Windows desktop demo
 
-## Download and setup
+Click **Notepad** (记事本) or **Calculator** (计算器) in the simulated Start menu. Follow the launch request as `make_launch_request()` returns it, `on_start_click()` receives it, and `open_app()` consumes it. Select a step to highlight its Python source.
 
-Download the VSIX from [Releases](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases),
-choose **Install from VSIX…** in VS Code, and reload the window.
-See [Installation](docs/INSTALL.en.md) for prerequisites and configuration.
+[![Simulated Windows desktop with the source trace for a launch request](demo/preview.jpg)](demo/index.html)
 
-Each user must supply their own DeepSeek API key or sign in to their own Codex account.
-The package does not include the developer's API keys, login credentials, personal settings, or chat history.
+Open the [interactive demo file](demo/index.html), use **Download raw file** to save the HTML, then open it in your browser. The demo uses the included [Python example](demo/desktop.py) and precomputed source evidence. It requires no VS Code installation, Python runtime, or model credentials.
 
-## What to try
+<details>
+<summary>Follow the four steps here on GitHub</summary>
 
-- Analyze a project and explore its structure map in the sidebar, editor area, or a separate window.
-- Follow source-backed calls from an entry point or selected function. Open code or continue explaining from a node.
-- Inspect how a leaf function's return value is received, stored, passed onward, or returned by its callers.
-- Distinguish static relationships, observations from passing tests, and unresolved relationships.
-- Review code diffs before applying changes. Confirm structural impact before writing; cancelling keeps the proposal without changing source.
+1. [Create the request](demo/desktop.py#L7-L8) · `make_launch_request()` returns a dictionary with the app ID and window configuration.
+2. [Receive the value](demo/desktop.py#L15-L16) · `on_start_click()` saves the result in `request`.
+3. [Pass it to the window handler](demo/desktop.py#L17) · `request` is passed to `open_app()`.
+4. [Read the window configuration](demo/desktop.py#L11-L12) · `open_app()` returns `request['window']`.
+
+</details>
+
+## Try it in VS Code
+
+Download the **0.27.22 preview** VSIX from [Releases](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases), choose **Install from VSIX…** in VS Code, and open a Python project. Set up your own DeepSeek key or Codex login, then run the call-chain explanation on a function and open **View return value and uses**. See the [installation guide](docs/INSTALL.en.md).
+
+The preview also includes project maps, source-linked call chains, and a structural change summary before applying edits. Static relationships, test observations, and unresolved links are displayed separately.
 
 ## Feedback
 
-Use [Issues](https://github.com/greenpoem33-cloud/code-companion-structure-map/issues) to report a reproducible problem or suggest an improvement.
-English and Chinese forms are available. Include your versions, steps, expected behavior, and actual result, ideally with a minimal example you can share publicly.
-Do not post keys, credentials, or private project source.
+First impressions are welcome. **When did you last trace a function's return value, how did you do it, and what took the most time?** [Share feedback](https://github.com/greenpoem33-cloud/code-companion-structure-map/issues/new?template=desktop-feedback.md) · [Report a bug](https://github.com/greenpoem33-cloud/code-companion-structure-map/issues/new/choose)
+
+This public repository distributes preview packages, documentation, and the standalone demo example. The extension development source and internal test projects remain private. No open-source license is granted with this preview. Please keep credentials and private code out of feedback.
 
 [Current scope](docs/KNOWN_ISSUES.en.md) · [Data and credentials](docs/PRIVACY.en.md) · [Validation](docs/TEST_RESULTS.en.md)

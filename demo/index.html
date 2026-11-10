@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>点一次「开始」，代码去了哪里？ · Code Companion</title>
+<style>
+  * { box-sizing: border-box; }
+  :root { color-scheme: light; font: 16px/1.5 'Segoe UI', 'Microsoft YaHei', system-ui, sans-serif; }
+  body { margin: 0; min-height: 100vh; color: #eef5ff; background: #102c60; }
+  .desktop { min-height: 100vh; display: grid; grid-template-rows: 1fr auto; background:
+    radial-gradient(ellipse at 82% 26%, #548dff 0, transparent 40%),
+    radial-gradient(ellipse at 45% 90%, #265bcc 0, transparent 60%), linear-gradient(135deg, #081633, #174186 58%, #1b44a8); }
+  main { width: min(1260px, 100%); margin: auto; display: grid; grid-template-columns: minmax(250px,.85fr) minmax(0,1.15fr); gap: clamp(28px,5vw,84px); padding: clamp(22px,5vw,72px); align-items: center; }
+  .eyebrow { margin: 0 0 12px; font-size: 12px; font-weight: 700; letter-spacing: .13em; color: #d2e3ff; }
+  h1 { font-size: clamp(32px,4.1vw,56px); line-height: 1.13; letter-spacing: -.04em; margin: 0; }
+  .intro { color: #e3edff; margin: 16px 0 24px; max-width: 29em; }
+  button { font: inherit; cursor: pointer; }
+  button:focus-visible, a:focus-visible { outline: 3px solid #ffa72c; outline-offset: 3px; }
+  .start-menu, .window { color: #16233c; background: #f4f7fd; border: 1px solid #fff8; border-radius: 14px; box-shadow: 0 18px 46px #050e344f; }
+  .start-menu { max-width: 380px; padding: 16px 18px; }
+  .start-menu h2 { font-size: 14px; margin: 0 0 8px; }
+  .apps { display: flex; gap: 8px; flex-wrap: wrap; }
+  .app { display: grid; gap: 5px; justify-items: center; min-width: 88px; padding: 9px; border: 1px solid transparent; border-radius: 8px; color: #16233c; background: transparent; font-size: 13px; }
+  .app:hover, .app[aria-pressed="true"] { background: #e5efff; border-color: #b8cdf4; }
+  .app-icon { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 8px; color: white; background: #1760ce; font-size: 23px; line-height: 1; }
+  .app:nth-child(2) .app-icon { background: #5348b3; }
+  .app-window { max-width: 380px; margin-top: 14px; }
+  .app-content { padding: 13px 16px; color: #435676; font-size: 13px; }
+  .window { min-width: 0; overflow: hidden; }
+  .titlebar { display: flex; gap: 8px; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid #dbe5f6; background: #eaf1fc; font-size: 13px; font-weight: 650; }
+  .badge { color: #214b86; background: #d8e8ff; border-radius: 30px; padding: 3px 9px; font-size: 11px; white-space: nowrap; }
+  .body { padding: clamp(14px,3vw,24px); }
+  .body h2 { margin: 0 0 5px; font-size: clamp(21px,3vw,29px); line-height: 1.2; }
+  .body p { margin: 0 0 16px; color: #435676; font-size: 14px; }
+  .steps { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin-bottom: 14px; }
+  .step { text-align: left; border: 1px solid #c9d6ed; background: #fff; color: #1a355f; border-radius: 8px; padding: 8px; min-width: 0; font-size: 12px; }
+  .step[aria-pressed="true"] { border-color: #2464ca; background: #dfedff; }
+  .step code { display: block; font-size: 11px; overflow-wrap: anywhere; margin-top: 3px; }
+  .editor { background: #111e37; color: #cbd9f1; border-radius: 9px; overflow: hidden; }
+  .file { padding: 8px 12px; border-bottom: 1px solid #2b3d5e; font-size: 12px; color: #c5daf9; }
+  pre { margin: 0; padding: 6px 0; overflow-x: auto; font: 12px/1.7 Consolas, monospace; }
+  .line { display: block; width: max-content; min-width: 100%; padding: 0 12px; border-left: 3px solid transparent; }
+  .line.active { color: #fff; border-left-color: #77b4ff; background: #233e67; }
+  .number { display: inline-block; width: 3ch; color: #9ab0d2; user-select: none; }
+  .body .footnote { margin: 13px 0 0; font-size: 12px; }
+  .feedback { display: inline-block; margin-top: 14px; color: #184f9d; font-size: 13px; }
+  .taskbar { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 7px 12px; color: #182c52; background: #e6effbeF; font-size: 12px; }
+  .start { display: flex; align-items: center; gap: 8px; border: 1px solid #c3d3ef; background: #fff; border-radius: 7px; padding: 6px 10px; color: #173563; }
+  .logo { display: grid; grid-template-columns: repeat(2,6px); grid-auto-rows: 6px; gap: 2px; }
+  .logo i { background: #1767dc; }
+  [hidden] { display: none !important; }
+  @media (max-width: 760px) { main { grid-template-columns: 1fr; gap: 22px; } }
+</style>
+</head>
+<body>
+<div class="desktop">
+  <main>
+    <section aria-labelledby="intro-title">
+      <p class="eyebrow">CODE COMPANION · WINDOWS 桌面演示</p>
+      <h1 id="intro-title">点一次「开始」<br>代码去了哪里？</h1>
+      <p class="intro">从下面的开始菜单打开一个应用，再跟着 Python 返回值走到接收它的那行代码。</p>
+      <section class="start-menu" id="start-menu" aria-labelledby="menu-heading">
+        <h2 id="menu-heading">开始 · 已固定</h2>
+        <div class="apps" id="apps"></div>
+      </section>
+      <section class="window app-window" id="app-window" aria-labelledby="app-title" hidden>
+        <div class="titlebar"><span id="app-title"></span><span class="badge">模拟窗口</span></div>
+        <div class="app-content" id="app-content"></div>
+      </section>
+    </section>
+    <section class="window" aria-labelledby="trace-heading">
+      <div class="titlebar"><span>◈ Code Companion</span><span class="badge">Python 静态证据</span></div>
+      <div class="body">
+        <h2 id="trace-heading">等待打开应用</h2>
+        <p id="status" role="status">点「记事本」或「计算器」，查看启动请求的去向。</p>
+        <div id="trace" hidden>
+          <div class="steps" id="steps" aria-label="返回值追踪步骤"></div>
+          <div class="editor"><div class="file" id="file">desktop.py</div><pre id="code" tabindex="0" aria-label="Python 源码"></pre></div>
+        </div>
+        <p class="footnote">这是模拟桌面。应用结果来自示例 Python 的预生成数据，源码位置来自插件的静态分析。</p>
+        <a class="feedback" href="https://github.com/greenpoem33-cloud/code-companion-structure-map/issues/new?title=Windows%20demo%20feedback">告诉我你追过什么样的返回值 ↗</a>
+      </div>
+    </section>
+  </main>
+  <div class="taskbar"><button class="start" id="start" aria-controls="start-menu" aria-expanded="true"><span class="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>开始</button><span id="task-app">桌面</span></div>
+</div>
+<script type="application/json" id="demo-data">{"source": ["APPS = {", "    'notepad': {'title': '记事本', 'icon': '▤'},", "    'calculator': {'title': '计算器', 'icon': '▦'},", "}", "", "", "def make_launch_request(app_id):", "    return {'app_id': app_id, 'window': APPS[app_id]}", "", "", "def open_app(request):", "    return request['window']", "", "", "def on_start_click(app_id):", "    request = make_launch_request(app_id)", "    return open_app(request)"], "steps": [{"label": "生成启动请求", "line": 8, "symbol": "make_launch_request"}, {"label": "接住返回值", "line": 16, "symbol": "request"}, {"label": "传给窗口处理函数", "line": 17, "symbol": "open_app"}, {"label": "查看接收函数", "line": 11, "symbol": "open_app"}], "windows": {"notepad": {"title": "记事本", "icon": "▤"}, "calculator": {"title": "计算器", "icon": "▦"}}}</script>
+<script>
+  const data = JSON.parse(document.getElementById('demo-data').textContent);
+  const byId = id => document.getElementById(id);
+  const start = byId('start');
+  start.addEventListener('click', () => {
+    const menu = byId('start-menu');
+    menu.hidden = !menu.hidden;
+    start.setAttribute('aria-expanded', String(!menu.hidden));
+    if (!menu.hidden) menu.querySelector('button').focus();
+  });
+
+  const stepButtons = data.steps.map((step, index) => {
+    const button = document.createElement('button');
+    button.className = 'step';
+    button.textContent = `${index + 1}. ${step.label}`;
+    const symbol = document.createElement('code');
+    symbol.textContent = step.symbol;
+    button.append(symbol);
+    button.addEventListener('click', () => showStep(index));
+    byId('steps').append(button);
+    return button;
+  });
+
+  function showStep(index) {
+    const { line } = data.steps[index];
+    stepButtons.forEach((button, position) => button.setAttribute('aria-pressed', String(position === index)));
+    byId('file').textContent = `desktop.py · L${line}`;
+    const code = byId('code');
+    code.replaceChildren();
+    for (let number = Math.max(1, line - 2); number <= Math.min(data.source.length, line + 2); number++) {
+      const row = document.createElement('span');
+      row.className = number === line ? 'line active' : 'line';
+      const gutter = document.createElement('span');
+      gutter.className = 'number';
+      gutter.textContent = number;
+      row.append(gutter, data.source[number - 1] || ' ');
+      code.append(row);
+    }
+  }
+
+  for (const [appId, { title, icon }] of Object.entries(data.windows)) {
+    const app = document.createElement('button');
+    app.className = 'app';
+    app.setAttribute('aria-pressed', 'false');
+    const glyph = document.createElement('span');
+    glyph.className = 'app-icon';
+    glyph.setAttribute('aria-hidden', 'true');
+    glyph.textContent = icon;
+    app.append(glyph, title);
+    byId('apps').append(app);
+    app.addEventListener('click', () => {
+      for (const tile of byId('apps').children) tile.setAttribute('aria-pressed', String(tile === app));
+      byId('trace-heading').textContent = `${title}的启动请求`;
+      byId('task-app').textContent = `${icon} ${title} · 模拟已打开`;
+      byId('app-title').textContent = `${icon} ${title}`;
+      byId('app-content').textContent = appId === 'notepad' ? '无标题.txt · 空白文档' : '标准模式 · 0';
+      byId('app-window').hidden = false;
+      byId('status').textContent = '依次点击下面的步骤，查看返回值从生成到交给窗口函数的源码位置。';
+      byId('trace').hidden = false;
+      showStep(0);
+      byId('steps').querySelector('button').focus();
+    });
+  }
+</script>
+</body>
+</html>
