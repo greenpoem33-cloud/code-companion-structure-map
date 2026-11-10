@@ -24,11 +24,13 @@ Click the image, choose Notepad or Calculator, and trace the launch request to i
 
 ## Try it in VS Code
 
-**[Download the 0.27.23 preview VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.23-preview.1/code-companion-structure-map-0.27.23.vsix)** · [Release notes](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/tag/v0.27.23-preview.1)
+**[Download the 0.27.24 preview VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.24-preview.1/code-companion-structure-map-0.27.24.vsix)** · [Release notes](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/tag/v0.27.24-preview.1)
 
 1. In the VS Code Extensions menu, select **Install from VSIX…**, then reload the window.
 2. Open [desktop.py](demo/desktop.py) and select **Download raw file**, open its folder in VS Code, and open the Python file.
 3. Right-click inside `make_launch_request()` and choose **Code Companion: 追踪返回值去向** (Trace return value). Select **Open use site** next to the `open_app` entry.
+
+![VS Code showing line 17 of desktop.py and the return-value trace](demo/vscode-return-trace.png)
 
 This command reads saved source and requires no model configuration. See [Installation](docs/INSTALL.en.md) for requirements and optional AI features.
 

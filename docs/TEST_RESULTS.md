@@ -1,5 +1,9 @@
 # 预览版验证记录
 
+## 0.27.24
+
+独立 Windows VS Code 配置中安装发布包，运行返回值追踪并点击 `open_app` 旁的「查看使用位置」，实际选中示例源码第 17 行。侧栏浏览器回归通过，覆盖恢复聊天后当前追踪可跳转源码、历史追踪保持只读。20 项调用链测试通过。
+
 ## 0.27.23
 
 在独立的 Windows VS Code 用户及扩展目录安装分发 VSIX，使用公开的 `demo/desktop.py` 验证静态返回值追踪。插件从 `make_launch_request()` 定位到 `on_start_click()` 接收的 `request` 及 `open_app(request)` 的传入位置。此过程未配置模型。

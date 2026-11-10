@@ -4,7 +4,7 @@
 
 ## 安装并试一次返回值追踪
 
-1. [下载 0.27.23 预览版 VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.23-preview.1/code-companion-structure-map-0.27.23.vsix)。
+1. [下载 0.27.24 预览版 VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.24-preview.1/code-companion-structure-map-0.27.24.vsix)。
 2. 在 VS Code 的扩展菜单选择「从 VSIX 安装」，安装后重载窗口。
 3. 打开 [desktop.py](../demo/desktop.py)，点 **Download raw file** 保存到本地，在 VS Code 中打开它所在的文件夹和该文件。选择 Python 解释器，或将 `codeCompanion.pythonCommand` 设置为解释器的完整路径。
 4. 把光标放进 `make_launch_request()`，右键选择「Code Companion: 追踪返回值去向」。在 `open_app` 的传入记录旁点「查看使用位置」，查看 `return open_app(request)`。
@@ -14,7 +14,7 @@
 命令行安装等效于：
 
 ```powershell
-code --install-extension .\code-companion-structure-map-0.27.23.vsix --force
+code --install-extension .\code-companion-structure-map-0.27.24.vsix --force
 ```
 
 分析后端已包含在包中，首次使用无需额外下载 html-skill。

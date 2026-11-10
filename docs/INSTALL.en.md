@@ -6,7 +6,7 @@ Validated on Windows. Requires VS Code 1.90+ and Python 3.10+; Python 3.11 or la
 
 ## Install and trace a return value
 
-1. [Download the 0.27.23 preview VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.23-preview.1/code-companion-structure-map-0.27.23.vsix).
+1. [Download the 0.27.24 preview VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.24-preview.1/code-companion-structure-map-0.27.24.vsix).
 2. In the VS Code Extensions menu, choose **Install from VSIX…**, then reload the window.
 3. Open [desktop.py](../demo/desktop.py) and select **Download raw file** and open its folder and the file in VS Code. Select a Python interpreter or set `codeCompanion.pythonCommand` to its full path.
 4. Right-click inside `make_launch_request()` and choose **Code Companion: 追踪返回值去向** (Trace return value). Select **Open use site** next to the `open_app` entry to see `return open_app(request)`.
@@ -16,7 +16,7 @@ This command reads saved source and runs without model configuration or an initi
 CLI installation:
 
 ```powershell
-code --install-extension .\code-companion-structure-map-0.27.23.vsix --force
+code --install-extension .\code-companion-structure-map-0.27.24.vsix --force
 ```
 
 The analysis backend is bundled. No separate html-skill download is required.

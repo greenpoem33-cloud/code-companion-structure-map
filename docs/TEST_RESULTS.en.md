@@ -2,6 +2,10 @@
 
 [简体中文](TEST_RESULTS.md) | **English**
 
+## 0.27.24
+
+In an isolated Windows VS Code installation of the release package, tracing the sample and selecting **Open use site** for `open_app` highlighted line 17. The sidebar browser suite passed, including source navigation for a fresh trace after chat restoration and read-only older traces. All 20 call-chain tests passed.
+
 ## 0.27.23
 
 The distributed VSIX was installed in isolated Windows VS Code user and extension directories. Using the public `demo/desktop.py`, the static trace followed `make_launch_request()` into `on_start_click()` and the `open_app(request)` use site without model configuration.

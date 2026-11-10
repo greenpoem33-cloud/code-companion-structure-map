@@ -24,11 +24,13 @@
 
 ## 在 VS Code 里试用
 
-**[下载 0.27.23 预览版 VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.23-preview.1/code-companion-structure-map-0.27.23.vsix)** · [发布说明](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/tag/v0.27.23-preview.1)
+**[下载 0.27.24 预览版 VSIX](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/download/v0.27.24-preview.1/code-companion-structure-map-0.27.24.vsix)** · [发布说明](https://github.com/greenpoem33-cloud/code-companion-structure-map/releases/tag/v0.27.24-preview.1)
 
 1. 在 VS Code 的扩展菜单选择「从 VSIX 安装」，安装后重载窗口。
 2. 打开 [desktop.py](demo/desktop.py)，点 **Download raw file** 保存到本地，打开它所在的文件夹，再打开这个 Python 文件。
 3. 在 `make_launch_request()` 函数内右键选择「Code Companion: 追踪返回值去向」，在 `open_app` 的传入记录旁点「查看使用位置」。
+
+![VS Code 实机截图，左侧选中 desktop.py 第 17 行，右侧显示返回值追踪](demo/vscode-return-trace.png)
 
 这条追踪只读已保存的源码，无需配置模型。环境要求和可选 AI 功能见 [安装与配置](docs/INSTALL.md)。
 
